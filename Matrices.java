@@ -1,7 +1,15 @@
 /*
  * Matrices
  */
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Matrices{
+
+    public static  BufferedReader bufer = new BufferedReader(new InputStreamReader(System.in));
+    public static String entrada;
 
     public static void imprirMatriz(int[][] m){ //m es el parametro
         System.out.println();
@@ -13,9 +21,11 @@ public class Matrices{
         }
     }
     
-    public static void main(String[] args){
+    public static void main(String[] args) throws IOException{
         int[][] matriz1 = new int [3][3];
         int numero = 1;
+        int renglones, columnas;
+
         for (int i = 0; i < matriz1.length; i++ ){
             for(int j= 0; j < matriz1[i].length; j++ ){
                 matriz1[i] [j] = numero;
@@ -24,5 +34,24 @@ public class Matrices{
         }
         System.out.println("Los valores de matriz1 son:  ");
         imprirMatriz(matriz1); //llamado con argumento
+
+        //Manipulando matriz irregular
+        int [][] matriz2;
+        System.out.println("Escribe el total de renglones: ");
+        entrada = bufer.readLine();
+        renglones = Integer.parseInt(entrada);
+        //Contruyendo la matriz2
+        matriz2 = new int[renglones][];
+        for(int i = 0; i < matriz2.length; i++){
+            System.out.println("Escriba columnas para el renglón " + i+ ": ");
+            entrada = bufer.readLine();
+            columnas = Integer.parseInt(entrada);
+            matriz2[i] = new int[columnas];
+            numero = 1;
+            for ( int j = 0; j < matriz2[i].length; j++ ){
+                numero++;
+            }
+        }
+
     }
 }
